@@ -65,11 +65,11 @@ export default {
         }
 			],
 			defaultNumber1:2,
-			defaultNumber2:3,
-			defaultNumber3:3,
+			defaultNumber2:2,
+			defaultNumber3:2,
 			mustNumber1:1,
 			mustNumber2:2,
-			mustNumber3:3
+			mustNumber3:2
     };
   },
   computed: {
@@ -82,9 +82,9 @@ export default {
 		if(parseInt(this.$route.query.type)===1){
 			for(let i=this.qsgx.length;i<this.defaultNumber1;i++) {this.add()};//默认两个
 		}else if(parseInt(this.$route.query.type)===2){
-			for(let i=this.qsgx.length;i<this.defaultNumber2;i++) {this.add()};//默认三个
+			for(let i=this.qsgx.length;i<this.defaultNumber2;i++) {this.add()};//默认两个
 		}else{
-			for(let i=this.qsgx.length;i<this.defaultNumber3;i++) {this.add()};//默认三个
+			for(let i=this.qsgx.length;i<this.defaultNumber3;i++) {this.add()};//默认两个
 		}
     // this.saveSession('name', this.qsgx)
   },

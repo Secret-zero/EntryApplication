@@ -148,11 +148,8 @@ export default {
             "小学",
             "初中",
             "高中",
-            "中专",
-            "大专",
-            "本科",
-            "硕士",
-            "研究生"
+            "大学",
+            "更高学历"
           ],
           className: "slot1",
           textAlign: "center"
@@ -161,11 +158,11 @@ export default {
       biye: "",
 			education: "",
 			defaultNumber1:1,
-			defaultNumber2:3,
+			defaultNumber2:2,
 			defaultNumber3:3,
 			mustNumber1:1,
 			mustNumber2:1,
-			mustNumber3:3
+			mustNumber3:2
     };
   },
   computed: {

@@ -112,8 +112,8 @@ export default {
 			defaultNumber2:3,
 			defaultNumber3:5,
 			mustNumber1:1,
-			mustNumber2:3,
-			mustNumber3:5
+			mustNumber2:1,
+			mustNumber3:3
     }
   },
   computed: {
@@ -131,7 +131,7 @@ export default {
 		}else if(parseInt(this.$route.query.type)===2){
 			for(let i=this.workList.length;i<this.defaultNumber2;i++) this.add();//默认三个
 		}else{
-			for(let i=this.workList.length;i<this.defaultNumber3;i++) this.add();//默认三个
+			for(let i=this.workList.length;i<this.defaultNumber3;i++) this.add();//默认五个
 		}
   },
   methods: {

@@ -10,7 +10,7 @@
               <i class='iconfont icon-iconfontyoujiantou'></i>
             </div>
           </li>
-          <li v-if='$route.query.type == 2 || $route.query.type == 3'>
+          <li>
             <div class='name'>有无吸烟</div>
             <div class='li-right v-flex' @click='showPopupPicker2 = true'>
               <input type="text" placeholder="请选择" readonly v-model='form.Fsmoke'>

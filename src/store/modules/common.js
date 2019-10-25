@@ -1,19 +1,19 @@
-import types from '../types'
+import types from "../types";
 const state = {
   isLoading: false,
-  direction: 'forward'
-}
+  direction: "forward"
+};
 
 const mutations = {
-	updateLoadingStatus (state, payload) {
-		state.isLoading = payload.isLoading
+  updateLoadingStatus(state, payload) {
+    state.isLoading = payload.isLoading;
   },
-  [types.UPDATE_DIRECTION](state,payload) {
-    state.direction = payload.direction
+  [types.UPDATE_DIRECTION](state, payload) {
+    state.direction = payload.direction;
   }
-}
+};
 
 export default {
-	state,
-	mutations
-}
+  state,
+  mutations
+};
