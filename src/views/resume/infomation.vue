@@ -3,7 +3,7 @@
 		<form @submit="confirm()">
 			<div class='upload1'>证件识别</div>
 			<div @click="clearFile" style="display:none;"> 清空 input 文件域</div>
-      <input data-v-67bd53cf="" type="file"  id="file-input" style="display: none;" multiple  accept="image/">
+      <input data-v-67bd53cf="" type="file"  id="file-input" style="display: none;" multiple  accept="image/*">
 			<!-- <input data-v-67bd53cf="" type="file"  style="display: none;" id="file-input" multiple  accept="image/"> -->
 			<div class='phontBox'>
 				<img class='id-card' v-if="!photo1" src='../../assets/images/idCardImg.jpg' @click="addPic('photo1')" />
@@ -34,6 +34,15 @@
 							<input type="text" placeholder="请选择" v-model='form.FFunctionName' readonly>
 						</div>
 					</li> -->
+					<li>
+						<div class='li-left'>
+						厂区*
+						</div>
+						<div class='li-right v-flex' @click='popupVisible7 = true'>
+							<input type="text" placeholder="请选择" readonly v-model='form.FOrganizeID' required oninvalid="setCustomValidity('请填写厂区')" oninput="setCustomValidity('')">
+							<i class='iconfont icon-iconfontyoujiantou'></i>
+						</div>
+					</li>
 					<li>
 						<div class='li-left'>
 							姓名*
@@ -285,6 +294,13 @@
 				</div>
 				<mt-picker :slots="slots6" @change="onValuesChange6"></mt-picker>
 			</mt-popup>
+			<mt-popup v-model="popupVisible7" position="bottom" class='mtPopup'>
+				<div class='popupTitle'>
+					<div class='close' @click='popupBtn("cancel")'>取消</div>
+					<div class='close' @click='popupBtn("confirm7")'>确定</div>
+				</div>
+				<mt-picker :slots="slots7" @change="onValuesChange7"></mt-picker>
+			</mt-popup>
 			  <mt-datetime-picker
 				class='mtPopup'
 				ref='dateTimePopup11'
@@ -346,6 +362,7 @@ export default {
       popupVisible4: false,
 			popupVisible5: false,
 			popupVisible6: false,
+			popupVisible7: false,
 			start: new Date("1900-01-01"),
       slots: [
         {
@@ -394,8 +411,19 @@ export default {
           className: 'slot1',
           textAlign: 'center'
         }
+			],
+			slots7: [
+        {
+          flex: 1,
+					values: ['金帝集团股份有限公司','金隆分公司','温州金易鞋材科技有限公司','温州金臻实业股份有限公司','金意分公司',
+					'金帝集团(江西)鞋业有限公司','河南金帝鞋业有限公司','金帝中底车间','金帝模具车间','上海金帝时尚文化有限公司',
+'上海金帝时尚文化有限公司武汉分公司','上海金帝时尚文化有限公司南通分公司','上海金帝时尚文化有限公司昆山分公司','GTH'],
+          className: 'slot1',
+          textAlign: 'center'
+        }
       ],
       form: {
+				FOrganizeID:'',
         Fnumber: '',
         Fname: '',
         FsexID: '',
@@ -670,7 +698,11 @@ export default {
 		onValuesChange6(picker, values) {
         this.FNativePlaceID = values[0]
         picker.setSlotValue(1, values[0]);
-    },
+		},
+		onValuesChange7(picker, values) {
+        this.FOrganizeID = values[0]
+        picker.setSlotValue(1, values[0]);
+		},
     popupBtn(value) {
       this.popupVisible = false
       this.popupVisible2 = false
@@ -678,6 +710,7 @@ export default {
       this.popupVisible4 = false
 			this.popupVisible5 = false
 			this.popupVisible6 = false
+			this.popupVisible7 = false
       if (value === 'cancel') {
       } else if (value === 'confirm') {
         this.form.FsexID = this.FsexID
@@ -691,6 +724,8 @@ export default {
         this.$set(this.form, 'FpoliticsFace', this.FpoliticsFace)
       } else if (value === 'confirm6') {
         this.$set(this.form, 'FNativePlaceID', this.FNativePlaceID)
+			} else if (value === 'confirm7') {
+        this.$set(this.form, 'FOrganizeID', this.FOrganizeID)
       } else if (value === 'confirm11') {
         let date = new Date(this.birthdayDate)
         let fullDate = date.getFullYear() + '-' + (date.getMonth() + 1 < 10 ? '0' + (date.getMonth()+ 1) : date.getMonth() + 1) + '-' + (date.getDate() < 10 ? '0' + date.getDate() : date.getDate())

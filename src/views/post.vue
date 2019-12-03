@@ -63,6 +63,7 @@ export default {
 			rankList2: [],
 			FJobType:0,
 			form: {
+				FOrganizeID:'',
         Fnumber: '',
         Fname: '',
         FsexID: '',
